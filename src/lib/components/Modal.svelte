@@ -41,10 +41,8 @@
           </div>
         </div>
         <hr>
-        <pre class="text-center mt-4 bg-gray-800 text-white w-52 rounded-lg py-2 mx-auto">
-          MineSweeple ({moves} moves)
-{result}Correct: {correct}/6
-        </pre>
+        <pre class="text-center mt-4 bg-gray-800 text-white w-52 rounded-lg py-2 mx-auto">MineSweeple ({moves} moves)
+{result}Correct: {correct}/5</pre>
       </div>
       <div class="bg-gray-50 dark:bg-gray-900 px-4 py-3 md:px-6 flex md:flex-row-reverse flex-col-reverse gap-2 justify-right">
         <button

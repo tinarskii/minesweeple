@@ -2,7 +2,7 @@
   import BoardGame from '$lib/board';
   import { writable } from "svelte/store";
   import Modal from "$lib/components/Modal.svelte";
-  let newBoard = new BoardGame(6, 6, 6)
+  let newBoard = new BoardGame(5, 5, 6)
   let Game = writable(newBoard);
   let Board = writable(newBoard.board)
 
@@ -18,10 +18,10 @@
 <main class="bg-black h-screen">
   <h1 class="text-white md:text-7xl text-5xl  text-center py-4">MineSweeple</h1>
   <div class="m-auto max-w-md">
-    <div class="grid grid-cols-6 justify-items-stretch md:gap-4 gap-2">
+    <div class="grid grid-cols-5 justify-items-stretch md:gap-4 gap-2">
       {#each $Board as row}
         {#each row as cell}
-          <div class="px-1 py-4 border border-gray-500 rounded-lg text-center text-xl cursor-pointer hover:bg-gray-800 duration-150 text-white { cell.isRevealed ? cell.neighborMines === 0 ? 'text-gray-400' : cell.neighborMines === 1 ? 'text-blue-500' : cell.neighborMines === 2 ? 'text-green-500' : cell.neighborMines === 3 ? 'text-yellow-500' : cell.neighborMines === 4 ? 'text-orange-500' : cell.neighborMines === 5 ? 'text-red-500' : cell.neighborMines === 6 ? 'text-purple-500' : cell.neighborMines === 7 ? 'text-pink-500' : cell.neighborMines === 8 ? 'text-gray-600' : 'text-white' : ''}" on:contextmenu|preventDefault={() =>  {
+          <div class="px-4 py-6 border border-gray-500 rounded-lg text-center text-xl cursor-pointer hover:bg-gray-800 duration-150 text-white { cell.isRevealed ? cell.neighborMines === 0 ? 'text-gray-400' : cell.neighborMines === 1 ? 'text-blue-500' : cell.neighborMines === 2 ? 'text-green-500' : cell.neighborMines === 3 ? 'text-yellow-500' : cell.neighborMines === 4 ? 'text-orange-500' : cell.neighborMines === 5 ? 'text-red-500' : cell.neighborMines === 6 ? 'text-purple-500' : cell.neighborMines === 7 ? 'text-pink-500' : cell.neighborMines === 8 ? 'text-gray-600' : 'text-white' : ''}" on:contextmenu|preventDefault={() =>  {
             if($Game.gameOver) return;
             flagged <= 6 ? $Game.flagCell(cell) : ''; $Board = $Board; $Game=$Game
           }} on:click={() => {
@@ -53,6 +53,6 @@
     result="{$Game.getWordleResult()}"
     moves="{$Game.moves}"
     correct="{$Game.getCorrectFlags()}"
-    closeModal="{() => {newBoard = new BoardGame(6, 6, 6); Game.set(newBoard); Board.set(newBoard.board); $Game.startGame()}}"
+    closeModal="{() => {newBoard = new BoardGame(5, 5, 6); Game.set(newBoard); Board.set(newBoard.board); $Game.startGame()}}"
   />
 {/if}
